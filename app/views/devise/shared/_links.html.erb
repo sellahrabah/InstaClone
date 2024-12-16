@@ -1,0 +1,75 @@
+<div class="container mt-5">
+  <div class="row">
+    <!-- Login Link -->
+    <div class="col-md-4 mb-3">
+      <div class="card shadow-sm">
+        <div class="card-body text-center">
+          <h5 class="card-title">Already have an account?</h5>
+          <%= link_to "Log in", new_session_path(resource_name), class: "btn btn-primary w-100" %>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sign Up Link -->
+    <div class="col-md-4 mb-3">
+      <div class="card shadow-sm">
+        <div class="card-body text-center">
+          <h5 class="card-title">New here?</h5>
+          <%= link_to "Sign up", new_registration_path(resource_name), class: "btn btn-success w-100" %>
+        </div>
+      </div>
+    </div>
+
+    <!-- Forgot Password Link -->
+    <div class="col-md-4 mb-3">
+      <div class="card shadow-sm">
+        <div class="card-body text-center">
+          <h5 class="card-title">Forgot Password?</h5>
+          <%= link_to "Forgot your password?", new_password_path(resource_name), class: "btn btn-warning w-100" %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <!-- Confirmation Link -->
+    <% if devise_mapping.confirmable? && controller_name != 'confirmations' %>
+      <div class="col-md-4 mb-3">
+        <div class="card shadow-sm">
+          <div class="card-body text-center">
+            <h5 class="card-title">Didn't receive confirmation instructions?</h5>
+            <%= link_to "Resend confirmation", new_confirmation_path(resource_name), class: "btn btn-info w-100" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+    <!-- Unlock Link -->
+    <% if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks' %>
+      <div class="col-md-4 mb-3">
+        <div class="card shadow-sm">
+          <div class="card-body text-center">
+            <h5 class="card-title">Account Locked?</h5>
+            <%= link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name), class: "btn btn-danger w-100" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="row">
+    <!-- Omniauth Providers Links -->
+    <% if devise_mapping.omniauthable? %>
+      <% resource_class.omniauth_providers.each do |provider| %>
+        <div class="col-md-4 mb-3">
+          <div class="card shadow-sm">
+            <div class="card-body text-center">
+              <h5 class="card-title">Sign in with <%= OmniAuth::Utils.camelize(provider) %></h5>
+              <%= button_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), data: { turbo: false }, class: "btn btn-outline-dark w-100" %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,14 @@
+<% content_for :title, "New Post" %>
+
+<div class="container my-5">
+
+  <!-- Formulaire de création -->
+  <div class="card shadow-sm rounded-4 p-4">
+    <%= render "form", post: @post %>
+  </div>
+
+  <!-- Bouton Retour aux posts -->
+  <div class="text-center mt-4">
+    <%= link_to "Back to Posts", posts_path, class: "btn btn-secondary btn-lg fw-bold" %>
+  </div>
+</div>

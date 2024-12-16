@@ -1,0 +1,14 @@
+<%# app/views/posts/_comments.html.erb %>
+<div class="comments mt-4">
+  <h5>Commentaires :</h5>
+  <% post.comments.each do |comment| %>
+    <div class="comment">
+      <p style="margin: 0; font-weight: bold;">
+        <%= comment.user&.email ? comment.user.email.split('@').first : "Utilisateur inconnu" %>
+      </p>
+      <p style="margin: 0 0 10px 20px;">
+        <%= comment.text %>
+      </p>
+    </div>
+  <% end %>
+</div>

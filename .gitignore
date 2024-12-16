@@ -1,0 +1,32 @@
+# Ignore Rails-specific files
+/.bundle
+/db/*.sqlite3
+/db/*.sqlite3-journal
+/log/*
+/tmp/*
+/public/assets
+/public/packs
+/public/packs-test
+.byebug_history
+
+# Ignore environment-specific files
+*.rbc
+capybara-*.html
+.rspec
+/coverage
+/spec/tmp
+/spec/log
+/.sass-cache
+/.node_modules
+
+# Ignore VS Code-specific files
+.vscode/
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore secrets and credentials
+/config/master.key
+/config/credentials.yml.enc
+

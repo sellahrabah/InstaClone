@@ -1,0 +1,17 @@
+<% content_for :title, "Editing Post" %>
+
+<div class="container my-5">
+  <!-- Header -->
+  <h1 class="text-center mb-4">Editing Post</h1>
+
+  <!-- Formulaire d'édition -->
+  <div class="card shadow-sm rounded-4 p-4">
+    <%= render "form", post: @post %>
+  </div>
+
+  <!-- Boutons d'action -->
+  <div class="mt-4 d-flex justify-content-center gap-3">
+    <%= link_to "Show this Post", @post, class: "btn btn-success fw-bold" %>
+    <%= link_to "Back to Posts", posts_path, class: "btn btn-secondary fw-bold" %>
+  </div>
+</div>

@@ -1,0 +1,8 @@
+<div class="container my-5">
+  <div class="card shadow-sm rounded-4 mb-4">
+    <div class="card-body">
+      <%= render "post", post: @post %>
+      <%= render "comments/form", post: @post, comment: @comment %>
+    </div>
+  </div>
+</div>

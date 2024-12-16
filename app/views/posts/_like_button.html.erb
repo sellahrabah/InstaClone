@@ -1,0 +1,10 @@
+<%# app/views/posts/_like_button.html.erb %>
+<% if user_signed_in? %>
+  <% like = current_user.likes.find_by(post: post) %>
+  <% if like.nil? %>
+    <%= button_to "Like", likes_path, params: { like: { post_id: post.id } }, method: :post, class: "btn btn-success mb-3" %>
+  <% else %>
+    <%= button_to "Unlike", like_path(like), method: :delete, class: "btn btn-danger mb-3" %>
+  <% end %>
+<% end %>
+<p><%= post.likes.count %> Likes</p>

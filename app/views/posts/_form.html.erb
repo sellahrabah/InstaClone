@@ -1,0 +1,78 @@
+<div class="col-xl-4 col-md-6 col-sm-8 col-10 mx-auto bg-light rounded-4 p-4 shadow-lg">
+  <%= form_with(model: post, class: "needs-validation", novalidate: true) do |form| %>
+  
+
+
+    <h1 class="text-center mb-4">New Post</h1>
+
+    <!-- Affichage des erreurs globales -->
+    <% if post.errors.any? %>
+      <div class="alert alert-danger">
+        <ul>
+          <% post.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <!-- Title Field -->
+    <div class="mb-3">
+      <% invalid = post.errors.include?(:title) %>
+      <%= form.label :title, class: "form-label fw-bold" %>
+      <%= form.text_field :title, class: "form-control #{'is-invalid' if invalid}" %>
+      <% if invalid %>
+        <div class="invalid-feedback d-block">
+          <%= post.errors.full_messages_for(:title).join(", ") %>
+        </div>
+      <% end %>
+    </div>
+
+    <!-- Champ User ID caché -->
+    <div>
+      <%= form.text_field :user_id, type: "hidden", value: current_user.id %>
+    </div>
+
+    <!-- Image Upload Field -->
+    <div class="mb-3">
+      <% invalid = post.errors.include?(:images) %>
+      <%= form.label :images, "Upload Images", class: "form-label fw-bold" %>
+      <%= form.file_field :images, multiple: true, class: "form-control #{'is-invalid' if invalid}" %>
+      <% if invalid %>
+        <div class="invalid-feedback d-block">
+          <%= post.errors.full_messages_for(:images).join(", ") %>
+        </div>
+      <% end %>
+    </div>
+
+    <!-- Description Field -->
+    <div class="mb-3">
+      <% invalid = post.errors.include?(:description) %>
+      <%= form.label :description, class: "form-label fw-bold" %>
+      <%= form.text_field :description, class: "form-control #{'is-invalid' if invalid}" %>
+      <% if invalid %>
+        <div class="invalid-feedback d-block">
+          <%= post.errors.full_messages_for(:description).join(", ") %>
+        </div>
+      <% end %>
+    </div>
+
+    <!-- Keyword Field -->
+    <div class="mb-3">
+      <% invalid = post.errors.include?(:keyword) %>
+      <%= form.label :keyword, class: "form-label fw-bold" %>
+      <%= form.text_field :keyword, class: "form-control #{'is-invalid' if invalid}" %>
+      <% if invalid %>
+        <div class="invalid-feedback d-block">
+          <%= post.errors.full_messages_for(:keyword).join(", ") %>
+        </div>
+      <% end %>
+    </div>
+
+    <!-- Submit Button en haut -->
+    <div class="mb-4">
+      <%= form.submit "Create Post", class: "btn btn-primary w-100 py-2 fw-bold" %>
+    </div>
+
+  <% end %>
+</div>

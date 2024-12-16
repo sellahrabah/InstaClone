@@ -1,0 +1,15 @@
+<div class="container my-5">
+  <div class="card shadow-lg rounded-4 p-5">
+    <h2 class="text-center mb-4">Welcome <%= @email %>!</h2>
+
+    <p class="text-center mb-4">You can confirm your account email through the link below:</p>
+
+    <div class="d-flex justify-content-center">
+      <%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token), class: "btn btn-primary btn-lg px-4 py-2" %>
+    </div>
+
+    <div class="mt-4 text-center">
+      <small class="text-muted">If you didn't request this, please ignore this email.</small>
+    </div>
+  </div>
+</div>
